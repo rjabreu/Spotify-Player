@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:layout_gravity="center"
+    >
+
+    <!-- Artist and Track Name -->
+
+        <TextView
+            android:layout_gravity="center"
+            android:text="Artist Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/artistName"
+            android:textSize="18dp"
+            android:padding="5dp"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:text="Song Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/songTitle"
+            android:textSize="18dp"
+            android:padding="5dp"/>
+
+
+
+    <ImageView
+        android:src="@drawable/aretha_franklin"
+        android:layout_width="270dp"
+        android:layout_height="270dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/trackImage"/>
+
+    <TextView
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Album Title"
+        android:id="@+id/albumTitle" />
+
+
+    <SeekBar
+        android:thumb="@drawable/thumb_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/songSeekBar"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        style="?android:attr/progressBarStyleHorizontal"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="0.00"/>
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="end"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_margin="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/previous"
+            android:background="@android:drawable/ic_media_previous"/>
+
+        <Button
+            android:layout_margin="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/playPause"
+            android:background="@android:drawable/ic_media_play"/>
+
+        <Button
+            android:layout_margin="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/next"
+            android:background="@android:drawable/ic_media_next"/>
+    </LinearLayout>
+</LinearLayout>
