@@ -8,11 +8,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -43,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         final ListView listView = (ListView) findViewById(R.id.listArtists);
         final EditText searchField = (EditText) findViewById(R.id.searchField);
-        final SpotifyHelper spotifyHelper = new SpotifyHelper();
+
 
         searchField.addTextChangedListener(new TextWatcher() {
 
@@ -62,26 +64,40 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(searchField.length()!=0)
-                {
-                    spotifyHelper.searchArtist(searchField.getText().toString());
-                    updateListView(listView, spotifyHelper.getArtistsNames());
+                if (searchField.length() != 0) {
+                    SpotifyHelper spotifyHelper = new SpotifyHelper();
+                    updateListView(listView, spotifyHelper.getArtists(searchField.getText().toString()));
+
                 }
             }
         });
 
+        listView.setClickable(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View parent, int position, long arg3) {
+
+                Object o = listView.getItemAtPosition(position);
+                Toast.makeText(MainActivity.this, "You Clicked " + o.toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
     }
 
-    void updateListView(ListView listView,String[] names)
+    void updateListView(ListView listView,ArrayList<Artist> artists)
     {
 
-        mAdapter = new ListResultsAdapter(this,names);
+        mAdapter = new ListResultsAdapter(this,artists);
 
         listView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
 
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -22,11 +22,17 @@ import retrofit.client.Response;
 public class SpotifyHelper {
     ArrayList<Artist> foundArtists = new ArrayList<Artist>();
     int flag = 0;
+
     ArrayList<Artist> getArtists(String artistName)
     {
         searchArtist(artistName);
+
+        for(int i = 3; i < foundArtists.size(); i++)
+            foundArtists.remove(i);
         return foundArtists;
+
     }
+
 
     String[] getArtistsNames()
     {
